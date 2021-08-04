@@ -15,30 +15,30 @@ import java.util.NoSuchElementException;
 
 public class AbstractPage {
 
-    private  WebDriverWait  wait = new WebDriverWait(DriverFactory.getDriver(),20);
+    private WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 20);
 
-    AbstractPage()
-    {
+    AbstractPage() {
 
     }
 
-    void  proceedToPage(final String url){
-        DriverFactory.getDriver().get(url);}
+    void proceedToPage(final String url) {
+        DriverFactory.getDriver().get(url);
+    }
 
-    WebElement getElement (By locator)
-    {
+    WebElement getElement(By locator) {
         WebElement webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return webElement;
     }
 
-    List<WebElement> getElements (By locator){return DriverFactory.getDriver().findElements(locator);}
+    List<WebElement> getElements(By locator) {
+        return DriverFactory.getDriver().findElements(locator);
+    }
 
-    public boolean isDisplayed(By locator)
-    {
-        try{
-          return getElement(locator)
-                   .isDisplayed();
-        }catch (NoSuchElementException | TimeoutException e){
+    public boolean isDisplayed(By locator) {
+        try {
+            return getElement(locator)
+                    .isDisplayed();
+        } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
     }

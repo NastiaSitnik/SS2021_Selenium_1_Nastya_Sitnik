@@ -12,12 +12,12 @@ public class BaseTest extends DriverFactory {
 
     @Parameters({"browserName"})
     @BeforeMethod(alwaysRun = true)
-    public void beforeMethod(@Optional(value = Constants.DriverConfigs.CHROME_NAME) final String browserName, Method method){
+    public void beforeMethod(@Optional(value = Constants.DriverConfigs.CHROME_NAME) final String browserName, Method method) {
         initDriver(browserName);
     }
 
     @AfterMethod(alwaysRun = true)
-    public void afterMethod(){
+    public void afterMethod() {
         quitDriver();
     }
 }

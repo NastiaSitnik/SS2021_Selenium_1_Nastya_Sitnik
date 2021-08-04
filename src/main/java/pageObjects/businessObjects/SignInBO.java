@@ -8,10 +8,11 @@ public class SignInBO {
 
     private SignInPage signInPage;
 
-    public SignInBO(){ signInPage = new SignInPage();}
+    public SignInBO() {
+        signInPage = new SignInPage();
+    }
 
-    public HomeBO login (String mail, String password)
-    {
+    public HomeBO login(String mail, String password) {
         signInPage.enterEmail(mail)
                 .continueButton()
                 .enterPassword(password)
@@ -19,30 +20,33 @@ public class SignInBO {
         return new HomeBO();
     }
 
-    public void enterEmail(String mail)
-    {
+    public SignInBO enterEmail(String mail) {
         signInPage.enterEmail(mail);
 //                .continueButton();
-        new HomeBO();
+        return this;
     }
 
-    public void verifyFailedLoginErrorMessageDisplayed(){
-        Assert.assertTrue(signInPage.isLoginFailedErrorMessageDisplayed(),"Login failed error" +
+    public void verifyFailedLoginErrorMessageDisplayed() {
+        Assert.assertTrue(signInPage.isLoginFailedErrorMessageDisplayed(), "Login failed error" +
                 "message is not displayed ");
     }
 
-    public void verifyContinueButtonIsDisable() {
-        Assert.assertTrue(signInPage.ContinueButtonIsDisable(), "Continue button is enabled");
+    public void verifyContinueButtonIsEnable() {
+        Assert.assertTrue(signInPage.isContinueButtonIsEnable(), "Continue button is disable");
     }
-    public void varifyEnterCorrectEmailHard(){
 
-        Assert.assertTrue(signInPage.ContinueButtonIsDisable(), "Continue button is enabled");
+
+    // винести асертер як змінну класу
+    public void varifyEmailIsNotCorrectAndContinueButtonIsDisableHardAssert() {
+
+        Assert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
 
     }
-    public void varifyEnterCorrectEmailSoft(){
+
+    public void varifyEmailIsNotCorrectAndContinueButtonIsDisableEmailSoft() {
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(signInPage.ContinueButtonIsDisable(), "Continue button is enabled");
+        softAssert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
         softAssert.assertAll();
     }
 

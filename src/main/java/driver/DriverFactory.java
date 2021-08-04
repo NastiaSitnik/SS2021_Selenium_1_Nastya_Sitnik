@@ -10,8 +10,8 @@ public class DriverFactory {
 
     private static WebDriver webDriver;
 
-    protected  void initDriver(String browserName)
-    {
+    // обробити кейс коли ініт драйвер який не підтрим
+    protected void initDriver(String browserName) {
         if (Constants.DriverConfigs.CHROME_NAME.equalsIgnoreCase(browserName)) {
             System.setProperty(Constants.DriverConfigs.CHROME_NAME, Constants.DriverConfigs.CHROME_DRIVER_LOCATION);
             webDriver = new ChromeDriver();
@@ -20,12 +20,15 @@ public class DriverFactory {
         webDriver.manage().timeouts().implicitlyWait(Constants.DriverConfigs.IMPLICITLY_WAIT_VALUE, TimeUnit.SECONDS);
     }
 
-    public static WebDriver getDriver(){return webDriver;}
+    //дод перевірка на інснування драйвера , там де потрібно драйвер використовувати getdriver()
+    public static WebDriver getDriver() {
+        return webDriver;
+    }
 
-    protected void quitDriver(){
-        if (webDriver != null){
+    protected void quitDriver() {
+        if (webDriver != null) {
             webDriver.quit();
-            webDriver=null;
+            webDriver = null;
         }
     }
 }
