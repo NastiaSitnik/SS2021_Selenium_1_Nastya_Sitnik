@@ -4,12 +4,10 @@ import org.openqa.selenium.By;
 
 import java.util.logging.Logger;
 
-import static consts.Constants.BusinessConfigs.HOME_PAGE_URL;
-
 public class BlogPage extends AbstractPage {
 
 
-    private static final Logger LOG = Logger.getLogger(String.valueOf(HomePage.class));
+    private static final Logger LOG = Logger.getLogger(String.valueOf(BlogPage.class));
 
     private By blogPageButton = By.xpath("//ul[@class='main-nav__list']//a[@class='topNavItem news click hover' and contains(text(),'Blog')]");
 
@@ -30,7 +28,6 @@ public class BlogPage extends AbstractPage {
         LOG.info("Click on BlogPage button");
         return new BlogPage();
     }
-
 
     public boolean isAllLinksOnPageIsDisplayed() {
         boolean isDisplayed = isDisplayed(newsLink) & isDisplayed(realStoryLink) & isDisplayed(materialsLink)

@@ -43,15 +43,11 @@ public class SignInPage extends AbstractPage {
         return this;
     }
 
-
-
-
     public boolean isLoginFailedErrorMessageDisplayed() {
         boolean isDisplayed = isDisplayed(loginFailedErrorMessage);
         LOG.info(String.format("Is 'Login Failed' error message displayed': '%s'", isDisplayed));
         return isDisplayed;
     }
-
 
     public boolean isContinueButtonIsDisable() {  // name : is..
         boolean isDisable = getElement(continueButton).isDisplayed();

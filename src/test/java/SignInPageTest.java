@@ -38,7 +38,7 @@ public class SignInPageTest extends BaseTest {
                 .enterEmail("@nastyasitk24gmail.com");
 
         new SignInBO()
-                .varifyEmailIsNotCorrectAndContinueButtonIsDisableHardAssert();
+                .verifyContinueButtonIsDisable();
 
     }
     // negative
@@ -51,7 +51,7 @@ public class SignInPageTest extends BaseTest {
                 .enterEmail("nastyasitk24gmail.com");
 
         new SignInBO()
-                .varifyEmailIsNotCorrectAndContinueButtonIsDisableHardAssert();
+                .verifyContinueButtonIsDisable();
     }
 
     // negative
@@ -64,7 +64,7 @@ public class SignInPageTest extends BaseTest {
                 .enterEmail("nastyasitk24@gmailcom");
 
         new SignInBO()
-                .varifyEmailIsNotCorrectAndContinueButtonIsDisableHardAssert();
+                .verifyContinueButtonIsDisable();
     }
 
     // negative
@@ -77,7 +77,7 @@ public class SignInPageTest extends BaseTest {
                 .enterEmail("@nastyasitk24gmail.com");
 
         new SignInBO()
-                .varifyEmailIsNotCorrectAndContinueButtonIsDisableEmailSoft();
+                .verifyContinueButtonIsDisable();
     }
 
     // negative
@@ -90,7 +90,7 @@ public class SignInPageTest extends BaseTest {
                 .enterEmail("nastyasitk24gmail.com");
 
         new SignInBO()
-                .varifyEmailIsNotCorrectAndContinueButtonIsDisableEmailSoft();
+                .verifyContinueButtonIsDisable();
     }
 
     // negative
@@ -103,7 +103,7 @@ public class SignInPageTest extends BaseTest {
                 .enterEmail("nastyasitk24@gmailcom");
 
         new SignInBO()
-                .varifyEmailIsNotCorrectAndContinueButtonIsDisableEmailSoft();
+                .verifyContinueButtonIsDisable();
     }
 
     // boundary values 63-correct // positive

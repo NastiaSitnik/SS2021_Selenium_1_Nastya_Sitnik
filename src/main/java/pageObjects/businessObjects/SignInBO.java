@@ -22,7 +22,6 @@ public class SignInBO {
 
     public SignInBO enterEmail(String mail) {
         signInPage.enterEmail(mail);
-//                .continueButton();
         return this;
     }
 
@@ -35,19 +34,10 @@ public class SignInBO {
         Assert.assertTrue(signInPage.isContinueButtonIsEnable(), "Continue button is disable");
     }
 
-
-    // винести асертер як змінну класу
-    public void varifyEmailIsNotCorrectAndContinueButtonIsDisableHardAssert() {
+    public void verifyContinueButtonIsDisable() {
 
         Assert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
 
-    }
-
-    public void varifyEmailIsNotCorrectAndContinueButtonIsDisableEmailSoft() {
-
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
-        softAssert.assertAll();
     }
 
 }
