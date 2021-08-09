@@ -21,11 +21,8 @@ public class HomeBO {
         return new SignInBO();
     }
 
-
-
     public void verifyUsernameIsVisibleRightTopCorner() {
         Assert.assertTrue(homePage.isUserNameDisplayed(), "Username is not displayed ");
     }
-
 
 }

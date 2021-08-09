@@ -14,7 +14,7 @@ public class SignInBO {
 
     public HomeBO login(String mail, String password) {
         signInPage.enterEmail(mail)
-                .continueButton()
+                .clickContinueButton()
                 .enterPassword(password)
                 .clickSignInButton();
         return new HomeBO();
@@ -22,7 +22,6 @@ public class SignInBO {
 
     public SignInBO enterEmail(String mail) {
         signInPage.enterEmail(mail);
-//                .continueButton();
         return this;
     }
 
@@ -31,23 +30,26 @@ public class SignInBO {
                 "message is not displayed ");
     }
 
+    public void verifyFailedLoginErrorMessageDisplayedSoftAssert() {
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(signInPage.isLoginFailedErrorMessageDisplayed(), "Login failed error" +
+                "message is not displayed ");
+        softAssert.assertAll();
+    }
+
     public void verifyContinueButtonIsEnable() {
         Assert.assertTrue(signInPage.isContinueButtonIsEnable(), "Continue button is disable");
     }
 
-
-    // винести асертер як змінну класу
-    public void varifyEmailIsNotCorrectAndContinueButtonIsDisableHardAssert() {
-
+    public void verifyContinueButtonIsDisable() {
         Assert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
-
     }
 
-    public void varifyEmailIsNotCorrectAndContinueButtonIsDisableEmailSoft() {
-
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
-        softAssert.assertAll();
-    }
+//    public void verifyContinueButtonIsDisableEmailSoft() {
+//
+//        SoftAssert softAssert = new SoftAssert();
+//        softAssert.assertTrue(signInPage.isContinueButtonIsDisable(), "Continue button is enabled");
+//        softAssert.assertAll();
+//    }
 
 }

@@ -18,7 +18,6 @@ public class AbstractPage {
     private WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 20);
 
     AbstractPage() {
-
     }
 
     void proceedToPage(final String url) {
@@ -42,4 +41,5 @@ public class AbstractPage {
             return false;
         }
     }
+
 }

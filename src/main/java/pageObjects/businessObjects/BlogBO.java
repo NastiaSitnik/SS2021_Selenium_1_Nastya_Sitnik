@@ -12,12 +12,12 @@ public class BlogBO {
         blogPage = new BlogPage();
     }
 
-    public BlogBO proceedToBlogPage(){
+    public BlogBO proceedToBlogPage() {
         blogPage.clickToBlogPage();
         return new BlogBO();
     }
 
-    public void verifyAllLinksIsDisplayed(){
-        Assert.assertTrue(blogPage.isAllLinksOnPageIsDisplayed(),"Not all link is displayed.");
+    public void verifyAllLinksIsDisplayed() {
+        Assert.assertTrue(blogPage.isAllLinksOnPageIsDisplayed(), "Not all link is displayed.");
     }
 }

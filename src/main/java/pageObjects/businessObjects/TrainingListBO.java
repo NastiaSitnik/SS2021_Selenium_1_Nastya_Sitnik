@@ -1,10 +1,7 @@
 package pageObjects.businessObjects;
 
 import org.testng.Assert;
-import pageObjects.SignInPage;
 import pageObjects.TrainingListPage;
-
-import java.util.logging.Logger;
 
 public class TrainingListBO {
 
@@ -14,28 +11,31 @@ public class TrainingListBO {
         trainingListPage = new TrainingListPage();
     }
 
-    public TrainingListBO goToJavaCourses(){
-        trainingListPage.clickOnJavaCheckbox();
-        return this;
-    }
-    public TrainingListBO goToRubyCourses(){
-        trainingListPage.clickOnRubyCheckbox();
+    public TrainingListBO goToCourses(String language) {
+        trainingListPage.clickOnCheckBox(language);
         return this;
     }
 
-    public TrainingListBO proceedToTrainingListPage(){
+    public TrainingListBO proceedToTrainingListPage() {
         trainingListPage.clickTrainingListPage();
         return new TrainingListBO();
     }
 
-    public void verifyAllCoursesInListIsJava() {
-        Assert.assertTrue(trainingListPage.isAllSearchResultJavaCourses(), "Not all courses in list is Java courses.");
+    public TrainingListBO goToCoursesInWhichCity(String country, String city) {
+        trainingListPage.clickOnSearch().clickOnCountry(country).clickOnCity(city);
+        return new TrainingListBO();
     }
 
-    public void verifyNoTrainingMessageIsDisplayed()
-    {
-        Assert.assertTrue(trainingListPage.isNoTraininMessageIsVisible(),"No training message ");
+    public void verifyAllCoursesInListIsJavaNeededLanguageSoftAssert(String language) {
+        Assert.assertTrue(trainingListPage.isAllSearchResultIsNeededLanguageSoftAssert(language), "Not all courses in list is Java courses.");
     }
 
+    public void verifyAllCoursesInListIsNeededLanguageHardAssert(String language) {
+        Assert.assertTrue(trainingListPage.isAllSearchResultIsNeededLanguageHardAssert(language), "Not all courses in list is Java courses.");
+    }
+
+    public void verifyNoTrainingMessageIsDisplayed() {
+        Assert.assertTrue(trainingListPage.isNoTrainingMessageIsVisible(), "No training message ");
+    }
 
 }

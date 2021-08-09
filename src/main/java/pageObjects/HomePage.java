@@ -1,22 +1,17 @@
 package pageObjects;
 
+import consts.Const;
 import org.openqa.selenium.By;
 
 import java.util.logging.Logger;
 
-import static consts.Constants.BusinessConfigs.HOME_PAGE_URL;
 
 public class HomePage extends AbstractPage {
 
     private static final Logger LOG = Logger.getLogger(String.valueOf(HomePage.class));
 
-
-    // "a[@class='header-auth__signin'...]"
-    private By signInButton = By.xpath("//a[@class='header-auth__signin']//span");
-
-    private By topRightCornerUserNameElement = By.className("user-info__name");
-
-
+    private final By signInButton = By.xpath("//a[@class='header-auth__signin']//span");
+    private final By topRightCornerUserNameElement = By.className("user-info__name");
 
 
     public SignInPage clickSignInButton() {
@@ -26,11 +21,10 @@ public class HomePage extends AbstractPage {
     }
 
     public HomePage proceedToHomePage() {
-        proceedToPage(HOME_PAGE_URL);
-        LOG.info(String.format("Proceeded to '%s' URL.", HOME_PAGE_URL));
+        proceedToPage(Const.HOME_PAGE_URL.getValue());
+        LOG.info(String.format("Proceeded to '%s' URL.", Const.HOME_PAGE_URL.getValue()));
         return this;
     }
-
 
     public boolean isUserNameDisplayed() {
         boolean isDisplayed = isDisplayed(topRightCornerUserNameElement);
@@ -41,8 +35,5 @@ public class HomePage extends AbstractPage {
     public String getLoggedInUserName() {
         return getElement(topRightCornerUserNameElement).getText();
     }
-
-
-
 
 }

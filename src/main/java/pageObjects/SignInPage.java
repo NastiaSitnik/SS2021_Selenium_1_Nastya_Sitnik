@@ -8,15 +8,11 @@ public class SignInPage extends AbstractPage {
 
     private static final Logger LOG = Logger.getLogger(String.valueOf(SignInPage.class));
 
-    private By mailInput = By.id("username");
-
-    private By passwordInput = By.id("password");
-
-    private By signInButton = By.id("kc-login");
-
-    protected By continueButton = By.id("kc-login-next");
-
-    private By loginFailedErrorMessage = By.xpath("//span[@class ='error-text' and contains(text(),'credentials')]");
+    private final By mailInput = By.id("username");
+    private final By passwordInput = By.id("password");
+    private final By signInButton = By.id("kc-login");
+    private final By continueButton = By.id("kc-login-next");
+    private final By loginFailedErrorMessage = By.xpath("//span[@class ='error-text' and contains(text(),'credentials')]");
 
 
     public SignInPage enterEmail(String email) {
@@ -37,14 +33,11 @@ public class SignInPage extends AbstractPage {
         return new HomePage();
     }
 
-    public SignInPage continueButton() { //клік в назві
+    public SignInPage clickContinueButton() {
         getElement(continueButton).click();
         LOG.info("Continue button clicked.");
         return this;
     }
-
-
-
 
     public boolean isLoginFailedErrorMessageDisplayed() {
         boolean isDisplayed = isDisplayed(loginFailedErrorMessage);
@@ -52,16 +45,15 @@ public class SignInPage extends AbstractPage {
         return isDisplayed;
     }
 
-
-    public boolean isContinueButtonIsDisable() {  // name : is..
+    public boolean isContinueButtonIsDisable() {
         boolean isDisable = getElement(continueButton).isDisplayed();
         LOG.info(String.format("Is 'Login Failed' continue button is disable ': '%s'", isDisable));
         return isDisable;
     }
 
-    public boolean isContinueButtonIsEnable() {  // name : is..
+    public boolean isContinueButtonIsEnable() {
         boolean isEnable = getElement(continueButton).isDisplayed();
-        LOG.info(String.format("Is 'Login Failed' continue button is disable ': '%s'", isEnable));
+        LOG.info(String.format("Is 'Login Failed' continue button is enable ': '%s'", isEnable));
         return isEnable;
     }
 }

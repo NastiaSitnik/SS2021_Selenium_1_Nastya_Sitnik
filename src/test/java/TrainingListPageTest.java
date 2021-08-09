@@ -4,30 +4,42 @@ import pageObjects.businessObjects.TrainingListBO;
 
 public class TrainingListPageTest extends BaseTest {
 
-    @Test(description = " User should see all Java courses. ")
-    public void verifyAllChosenCoursesIsJavaCourses(){    // do not work
+    @Test(description = " User should see all Java courses using soft assert. ")
+    public void verifyAllChosenCoursesIsJavaCourses() {
         new HomeBO()
                 .proceedToHomePage()
                 .clickSignInButton()
-                .login("nastyasitnik24@gmail.com","0675692829Nastya");
+                .login("nastyasitnik24@gmail.com", "0675692829Nastya");
         new TrainingListBO()
                 .proceedToTrainingListPage()
-                .goToJavaCourses()
-                .verifyAllCoursesInListIsJava();
+                .goToCourses("Java")
+                .verifyAllCoursesInListIsJavaNeededLanguageSoftAssert("Java");
+
+    }
+
+    @Test(description = " User should see all Java courses using hard assert. ")
+    public void verifyAllChosenCoursesIsJavaCoursesHardAssert() {
+        new HomeBO()
+                .proceedToHomePage()
+                .clickSignInButton()
+                .login("nastyasitnik24@gmail.com", "0675692829Nastya");
+        new TrainingListBO()
+                .proceedToTrainingListPage()
+                .goToCourses("Java")
+                .verifyAllCoursesInListIsNeededLanguageHardAssert("Java");
 
     }
 
     @Test(description = "User should see message that 'No trainings available' on Ruby  ")
-    public void verifyNoTrainingsAvailableMessageIsDisplayed(){
+    public void verifyNoTrainingsAvailableMessageIsDisplayed() {
         new HomeBO()
                 .proceedToHomePage()
                 .clickSignInButton()
-                .login("nastyasitnik24@gmail.com","0675692829Nastya");
+                .login("nastyasitnik24@gmail.com", "0675692829Nastya");
         new TrainingListBO()
                 .proceedToTrainingListPage()
-                .goToRubyCourses()
+                .goToCourses("Ruby")
                 .verifyNoTrainingMessageIsDisplayed();
     }
-
 
 }
